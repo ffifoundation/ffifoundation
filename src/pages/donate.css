@@ -1,0 +1,53 @@
+.donate-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* padding-top: 60px; */
+}
+
+.donate-card {
+    width: 450px;
+    padding: 15px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.donate-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.donate-input {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.donate-input:focus {
+    border-color: #1fa755;
+    box-shadow: 0 0 5px rgba(31, 167, 85, 0.4);
+}
+
+.donate-btn {
+    width: 100%;
+    padding: 15px;
+    background: #1fa755;
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.donate-btn:hover {
+    background: #188e47;
+}

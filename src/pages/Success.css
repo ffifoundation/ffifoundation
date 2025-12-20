@@ -1,0 +1,42 @@
+.success-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f9fa;
+}
+
+.success-card {
+  background: white;
+  padding: 40px;
+  width: 420px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.checkmark-animation {
+  font-size: 70px;
+  color: #28a745;
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.2); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.success-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: #1fa755;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.success-btn:hover {
+  background: #188e47;
+}

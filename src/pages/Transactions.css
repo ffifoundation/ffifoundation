@@ -1,0 +1,75 @@
+.transactions-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.transactions-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #0f9d58;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 15px;
+}
+
+.transactions-table th {
+    background: #0f9d58;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.transactions-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.transactions-table tr:hover {
+    background: #f7fafc;
+    transition: 0.2s ease-in-out;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.paid {
+    color: #0f9d58;
+    font-weight: bold;
+}
+
+.failed {
+    color: #d93025;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .transactions-title {
+        font-size: 22px;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
