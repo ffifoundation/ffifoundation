@@ -1,8 +1,4 @@
-/* ============================================
-   DONATION PAGE - BEAUTIFUL STYLES
-   ============================================ */
 
-/* Root Variables */
 :root {
     --primary-color: #1e88e5;
     --secondary-color: #43a047;
@@ -17,10 +13,6 @@
     --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.15);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* ============================================
-   BASE STYLES
-   ============================================ */
 
 * {
     margin: 0;
@@ -43,13 +35,8 @@ body {
     line-height: 1.6;
 }
 
-/* ============================================
-   DONATE PAGE LAYOUT
-   ============================================ */
-
 .donate-page {
     min-height: 100vh;
-    /* background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 50%, #e8f5e9 100%); */
     position: relative;
     overflow: hidden;
     padding: 60px 20px;
@@ -103,9 +90,6 @@ body {
     z-index: 10;
 }
 
-/* ============================================
-   HEADER SECTION
-   ============================================ */
 
 .donate-header {
     text-align: center;
@@ -116,7 +100,6 @@ body {
 .donate-title {
     font-size: 1.5rem;
     font-weight: 800;
-    /* margin-bottom: 20px; */
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -144,10 +127,6 @@ body {
         transform: translateY(0);
     }
 }
-
-/* ============================================
-   DONATION METHODS GRID
-   ============================================ */
 
 .donation-methods {
     display: grid;
@@ -432,10 +411,6 @@ body {
     transform: translateY(0);
 }
 
-/* ============================================
-   WHY DONATE SECTION
-   ============================================ */
-
 .why-donate-section {
     background: var(--bg-white);
     padding: 60px 40px;
@@ -530,10 +505,6 @@ body {
     line-height: 1.6;
 }
 
-/* ============================================
-   FAQ SECTION
-   ============================================ */
-
 .faq-section {
     background: var(--bg-white);
     padding: 60px 40px;
@@ -586,9 +557,6 @@ body {
     }
 }
 
-/* ============================================
-   NOTIFICATION TOAST
-   ============================================ */
 
 .notification-toast {
     position: fixed;
@@ -638,10 +606,6 @@ body {
         transform: scale(1) rotate(0);
     }
 }
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
 
 @media (max-width: 1024px) {
     .donate-title {
@@ -808,10 +772,6 @@ body {
         font-size: 0.95rem;
     }
 }
-
-/* ============================================
-   PRINT STYLES
-   ============================================ */
 
 @media print {
 

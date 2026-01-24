@@ -1,12 +1,17 @@
 // src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom"; // Import NavLink instead of Link
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
+import { IoChevronDown } from "react-icons/io5";
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -14,12 +19,37 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const token = localStorage.getItem("adminToken");
+
   const logout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("role");
     navigate("/admin-login");
   };
+
+  const programMenuItems = [
+    { label: "Rural Transformation", path: "/programs/rural-transformation" },
+    { label: "Health", path: "/programs/health" },
+    { label: "Education", path: "/programs/education" },
+    { label: "Sports for Development", path: "/programs/sports-development" },
+    { label: "Women Empowerment", path: "/programs/women-empowerment" },
+    { label: "Disaster Management", path: "/programs/disaster-management" },
+    {
+      label: "Arts, Culture & Heritage",
+      path: "/programs/arts-culture-heritage",
+    },
+    { label: "Urban Renewal", path: "/programs/urban-renewal" },
+  ];
+
+  const handleProgramClick = (path) => {
+    navigate(path);
+    setMenuOpen(false);
+    setDropdownOpen(false);
+    setMobileDropdownOpen(false);
+  };
+
+  const isProgramsActive = location.pathname.startsWith("/programs");
 
   return (
     <nav className="navbar">
@@ -61,15 +91,6 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/programs"
-            className={({ isActive }) => (isActive ? "active" : "")}
-            onClick={() => setMenuOpen(false)}
-          >
-            Programs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="/get-involved"
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setMenuOpen(false)}
@@ -86,7 +107,64 @@ const Navbar = () => {
             Contact
           </NavLink>
         </li>
-        {token ? (
+        {/* Programs Dropdown for Desktop */}
+        {width > 768 ? (
+          <li
+            className="dropdown"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <div
+              className={`dropdown-trigger ${isProgramsActive ? "active" : ""}`}
+            >
+              Programs
+              <IoChevronDown
+                className={`chevron-icon ${dropdownOpen ? "rotate" : ""}`}
+              />
+            </div>
+            {dropdownOpen && (
+              <div className="dropdown-menu">
+                {programMenuItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="dropdown-item"
+                    onClick={() => handleProgramClick(item.path)}
+                  >
+                    {item.label}
+                  </div>
+                ))}
+              </div>
+            )}
+          </li>
+        ) : (
+          /* Programs Dropdown for Mobile */
+          <li className="mobile-dropdown">
+            <div
+              className={`dropdown-trigger ${isProgramsActive ? "active" : ""}`}
+              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+            >
+              Programs
+              <IoChevronDown
+                className={`chevron-icon ${mobileDropdownOpen ? "rotate" : ""}`}
+              />
+            </div>
+            {mobileDropdownOpen && (
+              <div className="mobile-dropdown-menu">
+                {programMenuItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="dropdown-item"
+                    onClick={() => handleProgramClick(item.path)}
+                  >
+                    {item.label}
+                  </div>
+                ))}
+              </div>
+            )}
+          </li>
+        )}
+
+        {/* {token ? (
           <>
             <li>
               <NavLink
@@ -124,7 +202,7 @@ const Navbar = () => {
               Admin Login
             </NavLink>
           </li>
-        )}
+        )} */}
       </ul>
     </nav>
   );

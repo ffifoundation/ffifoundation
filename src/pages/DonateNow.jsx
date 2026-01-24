@@ -63,23 +63,21 @@ const DonateNow = () => {
         {/* Header Section */}
         <div className="donate-header">
           <h1 className="donate-title">Support Our Mission</h1>
-          <p className="donate-subtitle">
+          {/* <p className="donate-subtitle">
             Your generosity helps us provide education and opportunities to
             those in need. Every contribution makes a real difference in
             transforming lives.
-          </p>
+          </p> */}
         </div>
 
         {/* Donation Methods Grid */}
         <div className="donation-methods">
           {/* PhonePe Card */}
           <div className="payment-card phonepe-card">
-        
             <div className="card-body">
-
               <div className="qr-container">
                 <img
-                  src="/images/PNB_QR.jpg"
+                  src="/images/qr.jpg"
                   alt="PhonePe QR Code"
                   className="qr-code"
                 />

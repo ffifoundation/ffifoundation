@@ -3,6 +3,7 @@ import "./donate.css"; // <-- Import CSS for styling
 import { useNavigate } from "react-router-dom";
 import api from "../context/api";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Donate = () => {
   const navigate = useNavigate();
@@ -16,55 +17,89 @@ const Donate = () => {
     amount: "",
   });
 
-  const loadRazorpay = () => {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
-      document.body.appendChild(script);
-    });
-  };
+  // const loadRazorpay = () => {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement("script");
+  //     script.src = "https://checkout.razorpay.com/v1/checkout.js";
+  //     script.onload = () => resolve(true);
+  //     script.onerror = () => resolve(false);
+  //     document.body.appendChild(script);
+  //   });
+  // };
+  // https://iptv-org.github.io/iptv/index.m3u
+  // const createOrder = async () => {
+  //   const res = await api.post("/api/donations/create-order", form);
+  //   return res.data;
+  // };
 
-  const createOrder = async () => {
-    const res = await api.post("/api/donations/create-order", form);
-    return res.data;
-  };
+  // const handlePayment = async () => {
+  //   setLoading(true);
+  //   const isLoaded = await loadRazorpay();
+  //   if (!isLoaded) {
+  //     notify();
+  //     setLoading(false);
+  //     return;
+  //   }
 
+  //   const data = await createOrder();
+
+  //   const options = {
+  //     key: data.razorpayKey,
+  //     amount: data.amount,
+  //     currency: "INR",
+  //     name: "Fortune Foundation",
+  //     description: "Donation Payment",
+  //     order_id: data.orderId,
+  //     theme: {
+  //       color: "#33cc4a", // Customize theme color
+  //     },
+  //     handler: async function (response) {
+  //       await api.post("/api/donations/verify", {
+  //         razorpayOrderId: response.razorpay_order_id,
+  //         razorpayPaymentId: response.razorpay_payment_id,
+  //         razorpaySignature: response.razorpay_signature,
+  //       });
+
+  //       navigate("/success"); // redirect after success
+  //     },
+  //   };
+
+  //   const rzp = new window.Razorpay(options);
+  //   rzp.open();
+  // };
   const handlePayment = async () => {
-    setLoading(true);
-    const isLoaded = await loadRazorpay();
-    if (!isLoaded) {
-      notify();
-      setLoading(false);
-      return;
+    try {
+      const res = await axios.post(
+        "http://localhost:8081/api/donations/ccavenue",
+        {
+          donorName: form.name,
+          donorEmail: form.email,
+          donorPhone: form.phone,
+          amount: Number(form.amount).toFixed(2),
+        }
+      );
+
+      const formEl = document.createElement("form");
+      formEl.method = "POST";
+      formEl.action =
+        "https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction";
+
+      const encInput = document.createElement("input");
+      encInput.type = "hidden";
+      encInput.name = "encRequest";
+      encInput.value = res.data.encRequest;
+      const accessInput = document.createElement("input");
+      accessInput.type = "hidden";
+      accessInput.name = "accessCode";
+      accessInput.value = res.data.accessCode;
+      formEl.appendChild(encInput);
+      formEl.appendChild(accessInput);
+      document.body.appendChild(formEl);
+
+      formEl.submit();
+    } catch (e) {
+      alert("Payment initialization failed");
     }
-
-    const data = await createOrder();
-
-    const options = {
-      key: data.razorpayKey,
-      amount: data.amount,
-      currency: "INR",
-      name: "Fortune Foundation",
-      description: "Donation Payment",
-      order_id: data.orderId,
-      theme: {
-        color: "#33cc4a", // Customize theme color
-      },
-      handler: async function (response) {
-        await api.post("/api/donations/verify", {
-          razorpayOrderId: response.razorpay_order_id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpaySignature: response.razorpay_signature,
-        });
-
-        navigate("/success"); // redirect after success
-      },
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
   };
 
   return (
