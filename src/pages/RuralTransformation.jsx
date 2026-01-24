@@ -66,7 +66,7 @@ const RuralTransformation = () => {
     <ProgramPage
       title="Rural Transformation"
       description="Empowering rural communities through sustainable development initiatives and innovative solutions for agriculture, livelihoods, and infrastructure."
-      heroImage="/images/tribal-girls.jpg"
+      heroImage="/images/village-girls.jpg"
       mission="To provide quality education to children in need, empowering them for a brighter future through comprehensive rural development programs."
       vision="A world where every rural community has access to resources, opportunities, and sustainable livelihoods."
       impact="We have helped over 15,000 families in rural areas access better agricultural practices, skill development, and infrastructure improvements."

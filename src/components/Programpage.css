@@ -10,11 +10,11 @@
 
     width: 100vw;
     /* FULL viewport width */
-    height: 100vh;
-    min-height: 100vh;
+    height: 70vh;
+    min-height: 70vh;
 
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
+    background-position: top;
     background-repeat: no-repeat;
     overflow: hidden;
 
