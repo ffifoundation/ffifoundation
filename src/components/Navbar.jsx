@@ -1,9 +1,9 @@
 // src/components/Navbar.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars } from "react-icons/fa";
-import { IoMdLogOut } from "react-icons/io";
+// import { IoMdLogOut } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
 
 const Navbar = () => {
@@ -13,6 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [width, setWidth] = useState(window.innerWidth);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -20,13 +21,30 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const token = localStorage.getItem("adminToken");
+  // Handle click outside dropdown to close it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
 
-  const logout = () => {
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("role");
-    navigate("/admin-login");
-  };
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
+
+  // const token = localStorage.getItem("adminToken");
+
+  // const logout = () => {
+  //   localStorage.removeItem("adminToken");
+  //   localStorage.removeItem("role");
+  //   navigate("/admin-login");
+  // };
 
   const programMenuItems = [
     { label: "Rural Transformation", path: "/programs/rural-transformation" },
@@ -111,11 +129,12 @@ const Navbar = () => {
         {width > 768 ? (
           <li
             className="dropdown"
+            ref={dropdownRef}
             onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
           >
             <div
               className={`dropdown-trigger ${isProgramsActive ? "active" : ""}`}
+              onClick={() => setDropdownOpen(!dropdownOpen)}
             >
               Programs
               <IoChevronDown

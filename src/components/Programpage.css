@@ -5,22 +5,34 @@
     background-color: #f8f9fa;
 }
 
-/* Hero Section */
 .program-hero {
     position: relative;
-    height: 450px;
-    background-size: cover;
+
+    width: 100vw;
+    /* FULL viewport width */
+    height: 100vh;
+    min-height: 100vh;
+
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
+
+    /* 🔥 THIS IS THE KEY LINE */
+    margin-left: calc(-50vw + 50%);
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .program-hero-overlay {
-    display: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45));
+    z-index: 0;
 }
-
 
 .program-hero-content {
     position: relative;

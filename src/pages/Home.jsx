@@ -48,7 +48,11 @@ const Home = () => {
         >
           {heroSlides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <img src={slide.image} alt={`Slide ${index + 1}`} />
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="hero-slide-image contain"
+              />
               <div className="hero-text">
                 <h1>{slide.title}</h1>
                 <p>{slide.description}</p>
