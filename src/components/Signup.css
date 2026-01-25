@@ -1,59 +1,281 @@
 /* Signup Form Styling */
+.signup-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    padding: 20px;
+}
+
 .signup-container {
     width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 700px;
+    padding: 40px;
     background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .signup-container h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 .form-group label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .form-group textarea {
-    resize: none;
-    height: 80px;
+    resize: vertical;
+    min-height: 100px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #ff9800;
+.submit-btn {
+    width: 50%;
+    padding: 12px;
+    background: #08793f;
     border: none;
     color: white;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 20px auto 0;
+    display: block;
 }
 
-button:hover {
-    background: #e68900;
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .error {
-    color: red;
-    font-size: 14px;
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Success Container Styling */
+.success-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    padding: 20px;
+}
+
+.success-card {
+    background: white;
+    border-radius: 12px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
+    width: 100%;
+    animation: slideIn 0.5s ease-out;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #08793f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 48px;
+    color: white;
+    font-weight: bold;
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.success-card h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.success-card p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #08793f;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .signup-container,
+    .success-card {
+        padding: 30px 20px;
+        max-width: 100%;
+    }
+
+    .signup-container h2,
+    .success-card h2 {
+        font-size: 24px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+    .submit-btn {
+        padding: 10px;
+        font-size: 14px;
+        width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .signup-wrapper,
+    .success-container {
+        padding: 10px;
+    }
+
+    .signup-container,
+    .success-card {
+        padding: 20px 15px;
+    }
+
+    .signup-container h2,
+    .success-card h2 {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .success-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 36px;
+    }
+
+    .success-card p {
+        font-size: 14px;
+    }
+
+    .home-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        width: 80%;
+    }
 }

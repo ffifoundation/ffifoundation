@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from "react";
+import { HashRouter } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -6,6 +7,7 @@ import SocialIcons from "./components/SocialIcons";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
+import Signup from "./components/Signup";
 
 // Lazy load pages
 const Home = lazy(() => import("./pages/Home"));
@@ -31,7 +33,7 @@ const UrbanRenewal = lazy(() => import("./pages/UrbanRenewal"));
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
+      <HashRouter>
         <Navbar />
         <SocialIcons />
         <Suspense
@@ -54,6 +56,7 @@ const App = () => {
             <Route path="/donate" element={<DonateNow />} />
             <Route path="/success" element={<Success />} />
             <Route path="/programs" element={<Programs />} />
+            <Route path="/signup" element={<Signup />} />
 
             {/* Program routes */}
             <Route
@@ -95,7 +98,7 @@ const App = () => {
           </Routes>
         </Suspense>
         <Footer />
-      </Router>
+      </HashRouter>
       <Toaster position="top-center" />
     </AuthProvider>
   );

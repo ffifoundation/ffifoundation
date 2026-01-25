@@ -1,134 +1,86 @@
-import React, { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import { Link } from "react-router-dom";
 import "./Signup.css";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    mobile: "",
-    address: "",
-  });
-
-  const [errors, setErrors] = useState({});
-
-  // Validation function
-  const validate = (field, value) => {
-    let error = "";
-
-    if (!value.trim()) {
-      error = `${field} is required`;
-    } else {
-      if (
-        field === "email" &&
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-      ) {
-        error = "Invalid email format";
-      }
-      if (field === "mobile" && !/^\d{10}$/.test(value)) {
-        error = "Mobile number must be 10 digits";
-      }
-    }
-
-    return error;
-  };
-
-  // Handle input change with real-time validation
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    // Validate field immediately on change
-    setErrors({ ...errors, [name]: validate(name, value) });
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let newErrors = {};
-
-    // Validate all fields
-    Object.keys(formData).forEach((field) => {
-      newErrors[field] = validate(field, formData[field]);
-    });
-
-    setErrors(newErrors);
-
-    // If no errors, submit the form
-    if (Object.values(newErrors).every((err) => err === "")) {
-      alert("Signup Successful!");
-      console.log(formData);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobile: "",
-        address: "",
-      });
-      setErrors({});
-    }
-  };
+  const [state, handleSubmit] = useForm("xlgjyovq");
+  console.log(state);
+  if (state.succeeded) {
+    return (
+      <div className="success-container">
+        <div className="success-card">
+          <div className="success-icon">✓</div>
+          <h2>Thank You for Signing Up!</h2>
+          <p>
+            We've received your information and will get in touch with you soon.
+          </p>
+          <Link to="/" className="home-button">
+            ← Back to Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="signup-container">
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-          {errors.firstName && <p className="error">{errors.firstName}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-          {errors.lastName && <p className="error">{errors.lastName}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Mobile Number</label>
-          <input
-            type="text"
-            name="mobile"
-            value={formData.mobile}
-            onChange={handleChange}
-          />
-          {errors.mobile && <p className="error">{errors.mobile}</p>}
-        </div>
-
-        <div className="form-group">
-          <label>Address</label>
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          ></textarea>
-          {errors.address && <p className="error">{errors.address}</p>}
-        </div>
-
-        <button type="submit">Signup</button>
-      </form>
+    <div className="signup-wrapper">
+      <div className="signup-container">
+        <h2>Join Our Community</h2>
+        <p className="subtitle">Help us make a difference</p>
+        <form
+          onSubmit={handleSubmit}
+          action="https://formspree.io/f/xlgjyovq"
+          method="POST"
+        >
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="fullname">Full Name</label>
+              <input id="fullname" type="text" name="fullname" required />
+              <ValidationError
+                prefix="Full name"
+                field="fullname"
+                errors={state.errors}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <input id="email" type="email" name="email" required />
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="phone">Mobile Number</label>
+              <input id="phone" type="tel" name="phone" required />
+              <ValidationError
+                prefix="Phone"
+                field="phone"
+                errors={state.errors}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Address</label>
+              <input id="message" name="message" required />
+              <ValidationError
+                prefix="Address"
+                field="message"
+                errors={state.errors}
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            disabled={state.submitting}
+            className="submit-btn"
+          >
+            {state.submitting ? "Submitting..." : "Submit"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
