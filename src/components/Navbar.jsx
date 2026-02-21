@@ -125,6 +125,15 @@ const Navbar = () => {
             Contact
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/testimonies"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={() => setMenuOpen(false)}
+          >
+            Testimonies
+          </NavLink>
+        </li>
         {/* Programs Dropdown for Desktop */}
         {width > 768 ? (
           <li

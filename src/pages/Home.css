@@ -24,6 +24,7 @@
     object-fit: cover;
     object-position: top;
     display: block;
+    background: #f5f5f5;
 }
 
 .hero img {
@@ -35,12 +36,14 @@
 
 .hero-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+    left: 0;
+    right: 0;
     color: white;
     text-align: center;
     z-index: 9999;
+    padding: 40px 20px;
+    /* background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), transparent); */
 }
 
 .hero-text h1 {
