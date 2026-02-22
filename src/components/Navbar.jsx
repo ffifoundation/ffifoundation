@@ -78,6 +78,13 @@ const Navbar = () => {
         </NavLink>
       </div>
 
+      {/* Mobile Donate Button */}
+      {width <= 768 && (
+        <NavLink to="/donate" className="mobile-donate-btn">
+          Donate
+        </NavLink>
+      )}
+
       {/* Hamburger Menu Icon for Mobile */}
       {width <= 768 && (
         <FaBars
@@ -232,6 +239,18 @@ const Navbar = () => {
           </li>
         )} */}
       </ul>
+
+      {/* Action Buttons - Desktop Only */}
+      {width > 768 && (
+        <div className="navbar-action-buttons">
+          <NavLink to="/donate" className="action-btn donate-btn">
+            Donate Now
+          </NavLink>
+          <NavLink to="/get-involved" className="action-btn join-btn">
+            Join Us
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 };

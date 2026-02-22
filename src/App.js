@@ -19,6 +19,7 @@ const DonateNow = lazy(() => import("./pages/DonateNow"));
 const Success = lazy(() => import("./pages/Success"));
 const Transactions = lazy(() => import("./pages/Transactions"));
 const Testimonies = lazy(() => import("./pages/Testimonies"));
+const TestimonyDetail = lazy(() => import("./pages/TestimonyDetail"));
 
 // Lazy load program pages
 const RuralTransformation = lazy(() => import("./pages/RuralTransformation"));
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/programs" element={<Programs />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/testimonies" element={<Testimonies />} />
+            <Route path="/testimony/:id" element={<TestimonyDetail />} />
 
             {/* Program routes */}
             <Route

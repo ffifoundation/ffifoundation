@@ -24,7 +24,7 @@ const Home = () => {
           // "B.Suneel DSP 2.jpg.jpeg",
           "B.Suneel DSP.jpg.jpeg",
           // "Champions .jpg.jpeg",
-          "ELHAM  1.jpg.jpeg",
+          "ELHAM 1.jpg.jpeg",
           "ELHAM 2.jpg.jpeg",
           "ELHAM 4.jpg.jpeg",
           "ELHAM 5.jpg.jpeg",
@@ -77,14 +77,6 @@ const Home = () => {
                 <div className="hero-text">
                   <h1>{slide.title}</h1>
                   <p>{slide.description}</p>
-                  <div className="hero-buttons">
-                    <Link to="/donate" className="btn primary">
-                      Donate Now
-                    </Link>
-                    <Link to="/get-involved" className="btn secondary">
-                      Join Us
-                    </Link>
-                  </div>
                 </div>
               </SwiperSlide>
             ))}
