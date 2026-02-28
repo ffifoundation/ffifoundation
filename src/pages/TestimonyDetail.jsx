@@ -24,7 +24,7 @@ const TestimonyDetail = () => {
   }
 
   const testimony = testimonialsData[testimonialIndex];
-  const image = `/images/gallery/${testimony.file}`;
+  const image = `/images/updated/${testimony.file}`;
 
   return (
     <section className="testimony-detail">

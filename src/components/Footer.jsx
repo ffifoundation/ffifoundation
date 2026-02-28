@@ -2,14 +2,15 @@
 import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
-import { FaInstagram } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaYoutube,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
-import { FaFacebook } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
-
 import { MdLocalPhone } from "react-icons/md";
 const Footer = () => {
   return (
@@ -47,7 +48,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Social Media Links */}
+        {/* Contact Info */}
         <div className="footer-section">
           <h2>Contact Info</h2>
           <div className="address">
@@ -64,39 +65,67 @@ const Footer = () => {
               District, Andhra Pradesh,
             </p>
           </div>
+        </div>
 
-          {/* <div className="social-icons-footer">
-            <FaInstagram />
-            <RiTwitterXFill />
-            <FaFacebook />
-            <FaLinkedin />
-            <FaYoutube />
-            <FaWhatsapp />
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-facebook"></i>
+        {/* Social Media Links */}
+        <div className="footer-section">
+          <h2>Follow Us</h2>
+          <div className="social-media-links">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Facebook"
+              className="social-link"
+            >
+              <FaFacebook />
             </a>
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
+              title="Twitter"
+              className="social-link"
             >
-              <i className="fab fa-twitter"></i>
+              <RiTwitterXFill />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
+              title="Instagram"
+              className="social-link"
             >
-              <i className="fab fa-instagram"></i>
+              <FaInstagram />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
+              title="LinkedIn"
+              className="social-link"
             >
-              <i className="fab fa-linkedin"></i>
+              <FaLinkedin />
             </a>
-          </div> */}
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="YouTube"
+              className="social-link"
+            >
+              <FaYoutube />
+            </a>
+            <a
+              href="https://web.whatsapp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="WhatsApp"
+              className="social-link"
+            >
+              <FaWhatsapp />
+            </a>
+          </div>
         </div>
       </div>
 

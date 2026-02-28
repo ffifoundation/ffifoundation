@@ -3,7 +3,6 @@ import { HashRouter } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import SocialIcons from "./components/SocialIcons";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
@@ -36,7 +35,6 @@ const App = () => {
     <AuthProvider>
       <HashRouter>
         <Navbar />
-        <SocialIcons />
         <Suspense
           fallback={
             <div className="flex items-center justify-center min-h-screen">
