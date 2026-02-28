@@ -122,6 +122,7 @@ const Testimonies = () => {
                     src={testimony.image}
                     alt={testimony.name}
                     className="testimony-image"
+                    loading="lazy"
                   />
                 </Link>
                 <div className="testimony-content">

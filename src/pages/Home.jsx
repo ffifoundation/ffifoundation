@@ -63,6 +63,7 @@ const Home = () => {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
+            preloadImages={false}
             className="hero-slider"
           >
             {heroSlides.map((slide, index) => (
