@@ -1,12 +1,11 @@
 // src/pages/TestimonyDetail.jsx
 import React from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { testimonialsData } from "./Testimonies";
 import "./TestimonyDetail.css";
 
 const TestimonyDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const testimonialIndex = parseInt(id) - 1;
 
   if (testimonialIndex < 0 || testimonialIndex >= testimonialsData.length) {

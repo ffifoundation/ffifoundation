@@ -1,91 +1,286 @@
 /* src/pages/GetInvolved.css */
 .get-involved {
     text-align: center;
-    padding: 50px 20px;
+    padding: 0;
     background: #f9f9f9;
 }
 
 .get-involved h1 {
     font-size: 2.5rem;
     color: #333;
+    padding: 40px 20px 20px;
 }
 
-.get-involved p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 40px;
+.intro-text {
+    font-size: 1.1rem;
+    color: #666;
+    padding: 0 20px 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
 .involvement-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-items: center;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .involvement-card {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 300px;
     height: 100%;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .involvement-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .involvement-card img {
     width: 100%;
+    height: 250px;
     border-radius: 10px;
+    object-fit: cover;
     flex-shrink: 0;
+    margin-bottom: 15px;
 }
 
 .involvement-card h2 {
     margin: 15px 0;
-    font-size: 1.5rem;
-    color: #007BFF;
+    font-size: 1.6rem;
+    color: black;
     flex-shrink: 0;
 }
 
 .involvement-card p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
     flex-grow: 1;
 }
 
+.involvement-details {
+    text-align: left;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.involvement-details h4 {
+    color: black;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.involvement-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.involvement-details li {
+    color: #666;
+    margin-bottom: 8px;
+    padding-left: 25px;
+    position: relative;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.involvement-details li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
 .btn {
-    margin-top: 10px;
-    padding: 10px 15px;
+    margin-top: 15px;
+    padding: 12px 25px;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     align-self: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.primary {
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn.primary {
     background: #28a745;
     color: white;
 }
 
-.secondary {
+.btn.secondary {
     background: #ffc107;
     color: black;
 }
 
+/* Additional Ways Section */
+.additional-ways {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.additional-ways h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.ways-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.way-card {
+    background: white;
+    color: #333;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    /* border-top: 4px solid #007BFF; */
+}
+
+.way-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.way-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.way-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Impact Section */
+.impact-section {
+    padding: 60px 20px;
+    background: white;
+    color: #333;
+}
+
+.impact-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.impact-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.impact-item {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.impact-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.impact-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.impact-item strong {
+    display: block;
+    font-size: 1.8rem;
+    color: black;
+    margin-bottom: 10px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .involvement-options {
-        flex-direction: column;
-        align-items: center;
+
+    .get-involved h1,
+    .additional-ways h2,
+    .impact-section h2 {
+        font-size: 2rem;
+    }
+
+    .involvement-options,
+    .ways-grid,
+    .impact-items {
+        gap: 20px;
+    }
+
+    .involvement-card {
+        max-width: 100%;
+    }
+
+    .involvement-card img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .get-involved h1,
+    .additional-ways h2,
+    .impact-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .involvement-options,
+    .ways-grid,
+    .impact-items {
+        grid-template-columns: 1fr;
+    }
+
+    .involvement-card {
+        padding: 20px;
+    }
+
+    .involvement-details {
+        padding: 10px;
+    }
+
+    .impact-item strong {
+        font-size: 1.5rem;
     }
 }
