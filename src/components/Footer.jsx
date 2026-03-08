@@ -132,7 +132,7 @@ const Footer = () => {
       {/* Copyright Section */}
       <div className="footer-bottom">
         <p>
-          &copy; {new Date().getFullYear()} NGO Education. All Rights Reserved.
+          &copy; {new Date().getFullYear()} FFI Foundation. All Rights Reserved.
         </p>
       </div>
     </footer>
