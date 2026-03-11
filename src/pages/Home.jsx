@@ -17,21 +17,21 @@ const Home = () => {
       try {
         // List of main images - these are the images in public/images/home/
         const images = [
-          "A. Roopa Jwalamukhi.png",
-          "B. Janardhan Rao.png",
-          "B. Sharma.png",
-          "B. suneel.png",
-          "Banuchandar.png",
-          "Elham.png",
-          "G. Laxmi Thanuja.png",
-          "Gopinadh.png",
-          "Naga Malli.png",
-          "Prasanth Kumar.png",
-          "Shaik Nurjahan bee.png",
-          "Shiva Krishna.png",
-          "T. Vijaya.png",
-          "Udaya Kumari.png",
-          "vinay kumar.png",
+          "B. suneel.png", // 1
+          "B. Sharma.png", // 2
+          "vinay kumar.png", // 3
+          "Naga Malli.png", // 4
+          "B. Janardhan Rao.png", // 5
+          "Gopinadh.png", // 6
+          "A. Roopa Jwalamukhi.png", // 7
+          "Banuchandar.png", // 8
+          "Shaik Nurjahan bee.png", // 9
+          "Shiva Krishna.png", // 10
+          "Udaya Kumari.png", // 11
+          "P.Anusha.png", // 12
+          "Prasanth Kumar.png", // 13
+          "G. Laxmi Thanuja.png", // 14
+          "T. Vijaya.png", // 15
         ];
 
         const slides = images.map((img) => ({
@@ -91,29 +91,67 @@ const Home = () => {
       <div className="about">
         <h2>Who We Are</h2>
 
+        <p>Rooted in India. Committed to Every Indian.</p>
+
         <p>
-          FFI Foundation was formed with a simple yet powerful belief — that
-          every individual deserves the opportunity to live with dignity,
-          safety, and hope. What began as a shared vision among socially
-          conscious individuals has grown into a movement committed to creating
-          meaningful and sustainable change in society.
+          India is not just a country. India is an emotion — woven with
+          resilience, sacrifice, diversity, and hope.
         </p>
 
         <p>
-          The foundation emerged during a time when rapid development created
-          opportunities for many but also highlighted deep inequalities
-          affecting vulnerable communities. Millions of families continue to
-          struggle with poverty, unsafe housing, limited access to education,
-          and basic resources.
+          Fortunate Future International Foundation was born from this very
+          emotion.
         </p>
 
         <p>
-          Through collaboration with volunteers, supporters, and communities,
-          FFI Foundation works to improve living conditions, promote education,
-          support disaster resilience, and create opportunities for a better
-          future.
+          As Indians, we grow up witnessing both extraordinary progress and
+          silent struggles — children with dreams but limited access, women with
+          strength but fewer opportunities, villages rich in wisdom yet deprived
+          of resources, and families that rise every day with dignity despite
+          adversity. These realities do not reflect weakness; they reflect
+          untapped potential.
         </p>
 
+        <p>
+          This foundation was created with a single, unwavering purpose: to
+          stand with the people of India and contribute meaningfully to
+          nation-building.
+        </p>
+
+        <p>
+          Our work is driven by the belief that a strong India is built not only
+          by infrastructure and economy, but by educated minds, healthy bodies,
+          empowered women, skilled youth, nourished children, and resilient
+          communities. Every initiative we undertake — whether in education,
+          health, rural transformation, livelihoods, or social justice — is
+          rooted in the aspiration to uplift Indians from the grassroots upward.
+        </p>
+
+        <p>
+          We do not see service as charity. We see it as our responsibility as
+          citizens of this nation.
+        </p>
+
+        <p>
+          Fortunate Future International Foundation exists to support Indians at
+          every stage of life — from nurturing a child’s education, empowering
+          women to lead, enabling youth with skills, preserving our rich
+          culture, protecting our environment, and standing beside communities
+          in times of crisis.
+        </p>
+
+        <p>
+          India’s future lies in the hands of its people. Our role is to
+          strengthen those hands.
+        </p>
+
+        <p>
+          With humility, commitment, and collective effort, we dedicate
+          ourselves to building a nation where opportunity reaches every corner,
+          dignity reaches every home, and hope reaches every heart.
+        </p>
+
+        <p>Together, let us build a Fortunate Future for India.</p>
         <Link to="/about" className="btn primary">
           Learn More
         </Link>

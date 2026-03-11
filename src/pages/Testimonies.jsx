@@ -83,6 +83,13 @@ export const testimonialsData = [
     content:
       "My success as a police constable is proof that courage and hard work can break every barrier.I hope to motivate many young women to aim higher",
   },
+  {
+    file: "P Anusha potrait.png",
+    name: "P. Anusha",
+    role: "Junior College Lecturer",
+    content:
+      "Being married and coming from a rural background, many thought my opportunities were limited. But with the right guidance and hard work, I achieved my dream of becoming a Government Teacher. Today, I am proud to inspire other women to believe that education and determination can change any life.",
+  },
 ];
 
 const Testimonies = () => {
