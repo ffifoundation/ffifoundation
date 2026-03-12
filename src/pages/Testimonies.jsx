@@ -94,6 +94,7 @@ export const testimonialsData = [
 
 const Testimonies = () => {
   const [testimonies, setTestimonies] = useState([]);
+  const [loadedImages, setLoadedImages] = useState(new Set());
 
   useEffect(() => {
     const testimonyArray = testimonialsData.map((item, index) => ({
@@ -105,6 +106,15 @@ const Testimonies = () => {
     }));
 
     setTestimonies(testimonyArray);
+
+    // Preload all images in the background
+    testimonyArray.forEach((testimony) => {
+      const image = new Image();
+      image.src = testimony.image;
+      image.onload = () => {
+        setLoadedImages((prev) => new Set(prev).add(testimony.image));
+      };
+    });
   }, []);
 
   return (
@@ -119,7 +129,7 @@ const Testimonies = () => {
       <div className="testimonies-container">
         {testimonies.length > 0 ? (
           <div className="testimonies-grid">
-            {testimonies.map((testimony) => (
+            {testimonies.map((testimony, index) => (
               <div key={testimony.id} className="testimony-card">
                 <div className="testimony-header">
                   <h3 className="testimony-name">{testimony.name}</h3>
@@ -133,7 +143,8 @@ const Testimonies = () => {
                     src={testimony.image}
                     alt={testimony.name}
                     className="testimony-image"
-                    loading="lazy"
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
                   />
                 </Link>
                 <div className="testimony-content">
@@ -146,7 +157,9 @@ const Testimonies = () => {
             ))}
           </div>
         ) : (
-          <p>Loading testimonies...</p>
+          <div className="testimonies-loading">
+            <p>Loading testimonies...</p>
+          </div>
         )}
       </div>
     </section>

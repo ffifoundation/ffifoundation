@@ -1,5 +1,5 @@
 // src/components/ImageSlider.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -15,6 +15,14 @@ const ImageSlider = () => {
     "/images/child.jpg",
   ];
 
+  // Preload all images
+  useEffect(() => {
+    images.forEach((img) => {
+      const image = new Image();
+      image.src = img;
+    });
+  }, []);
+
   return (
     <Swiper
       modules={[Autoplay, Navigation, Pagination]}
@@ -24,11 +32,18 @@ const ImageSlider = () => {
       pagination={{ clickable: true }}
       autoplay={{ delay: 2000, disableOnInteraction: false }} // Slides every 2 seconds
       loop={true}
+      preloadImages={false}
       className="image-slider"
     >
       {images.map((img, index) => (
         <SwiperSlide key={index}>
-          <img src={img} alt={`Slide ${index + 1}`} className="slide-image" />
+          <img
+            src={img}
+            alt={`Slide ${index + 1}`}
+            className="slide-image"
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
         </SwiperSlide>
       ))}
     </Swiper>

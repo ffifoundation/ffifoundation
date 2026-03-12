@@ -154,7 +154,7 @@ body {
 
 /* Payment Cards */
 .payment-card {
-    background: linear-gradient(135deg, var(--bg-white) 0%, #f8f9fa 100%);
+    background: linear-gradient(rgb(215, 230, 235));
     border-radius: 20px;
     padding: 40px 30px;
     box-shadow: 0 8px 30px rgba(34, 113, 177, 0.12);
@@ -446,7 +446,7 @@ body {
 }
 
 .why-donate-section {
-    background: linear-gradient(135deg, var(--bg-white) 0%, #f8f9fa 100%);
+    background: linear-gradient(rgb(215, 230, 235));
     padding: 60px 40px;
     border-radius: 20px;
     margin-bottom: 60px;

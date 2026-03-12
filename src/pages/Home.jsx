@@ -10,6 +10,16 @@ import "swiper/css/navigation";
 
 const Home = () => {
   const [heroSlides, setHeroSlides] = useState([]);
+  const [loadedImages, setLoadedImages] = useState(new Set());
+
+  // Preload the first image immediately
+  useEffect(() => {
+    const firstImage = new Image();
+    firstImage.src = "/images/home/B. suneel.png";
+    firstImage.onload = () => {
+      setLoadedImages((prev) => new Set(prev).add("B. suneel.png"));
+    };
+  }, []);
 
   // Dynamically load gallery images for the hero slider
   useEffect(() => {
@@ -41,6 +51,12 @@ const Home = () => {
         }));
 
         setHeroSlides(slides);
+
+        // Preload subsequent images
+        images.forEach((img) => {
+          const image = new Image();
+          image.src = `/images/home/${img}`;
+        });
       } catch (error) {
         console.error("Error loading gallery images:", error);
       }
@@ -72,6 +88,8 @@ const Home = () => {
                   src={slide.image}
                   alt={slide.title}
                   className="hero-slide-image contain"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
                 />
                 {/* <div className="hero-text">
                   <h1>{slide.title}</h1>
@@ -83,7 +101,9 @@ const Home = () => {
             <div className="swiper-button-next"></div>
           </Swiper>
         ) : (
-          <p>Loading gallery...</p>
+          <div className="hero-skeleton">
+            <p>Loading Images...</p>
+          </div>
         )}
       </div>
 
