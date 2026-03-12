@@ -28,7 +28,7 @@ const Home = () => {
           "Shaik Nurjahan bee.png", // 9
           "Shiva Krishna.png", // 10
           "Udaya Kumari.png", // 11
-          "P.Anusha.png", // 12
+          "P. Anusha.png", // 12
           "Prasanth Kumar.png", // 13
           "G. Laxmi Thanuja.png", // 14
           "T. Vijaya.png", // 15
@@ -88,73 +88,76 @@ const Home = () => {
       </div>
 
       {/* About Section */}
-      <div className="about">
-        <h2>Who We Are</h2>
+      <div className="about-section">
+        <div className="about-card">
+          <h2>Who We Are</h2>
 
-        <p>Rooted in India. Committed to Every Indian.</p>
+          <p>Rooted in India. Committed to Every Indian.</p>
 
-        <p>
-          India is not just a country. India is an emotion — woven with
-          resilience, sacrifice, diversity, and hope.
-        </p>
+          <p>
+            India is not just a country. India is an emotion — woven with
+            resilience, sacrifice, diversity, and hope.
+          </p>
 
-        <p>
-          Fortunate Future International Foundation was born from this very
-          emotion.
-        </p>
+          <p>
+            Fortunate Future International Foundation was born from this very
+            emotion.
+          </p>
 
-        <p>
-          As Indians, we grow up witnessing both extraordinary progress and
-          silent struggles — children with dreams but limited access, women with
-          strength but fewer opportunities, villages rich in wisdom yet deprived
-          of resources, and families that rise every day with dignity despite
-          adversity. These realities do not reflect weakness; they reflect
-          untapped potential.
-        </p>
+          <p>
+            As Indians, we grow up witnessing both extraordinary progress and
+            silent struggles — children with dreams but limited access, women
+            with strength but fewer opportunities, villages rich in wisdom yet
+            deprived of resources, and families that rise every day with dignity
+            despite adversity. These realities do not reflect weakness; they
+            reflect untapped potential.
+          </p>
 
-        <p>
-          This foundation was created with a single, unwavering purpose: to
-          stand with the people of India and contribute meaningfully to
-          nation-building.
-        </p>
+          <p>
+            This foundation was created with a single, unwavering purpose: to
+            stand with the people of India and contribute meaningfully to
+            nation-building.
+          </p>
 
-        <p>
-          Our work is driven by the belief that a strong India is built not only
-          by infrastructure and economy, but by educated minds, healthy bodies,
-          empowered women, skilled youth, nourished children, and resilient
-          communities. Every initiative we undertake — whether in education,
-          health, rural transformation, livelihoods, or social justice — is
-          rooted in the aspiration to uplift Indians from the grassroots upward.
-        </p>
+          <p>
+            Our work is driven by the belief that a strong India is built not
+            only by infrastructure and economy, but by educated minds, healthy
+            bodies, empowered women, skilled youth, nourished children, and
+            resilient communities. Every initiative we undertake — whether in
+            education, health, rural transformation, livelihoods, or social
+            justice — is rooted in the aspiration to uplift Indians from the
+            grassroots upward.
+          </p>
 
-        <p>
-          We do not see service as charity. We see it as our responsibility as
-          citizens of this nation.
-        </p>
+          <p>
+            We do not see service as charity. We see it as our responsibility as
+            citizens of this nation.
+          </p>
 
-        <p>
-          Fortunate Future International Foundation exists to support Indians at
-          every stage of life — from nurturing a child’s education, empowering
-          women to lead, enabling youth with skills, preserving our rich
-          culture, protecting our environment, and standing beside communities
-          in times of crisis.
-        </p>
+          <p>
+            Fortunate Future International Foundation exists to support Indians
+            at every stage of life — from nurturing a child’s education,
+            empowering women to lead, enabling youth with skills, preserving our
+            rich culture, protecting our environment, and standing beside
+            communities in times of crisis.
+          </p>
 
-        <p>
-          India’s future lies in the hands of its people. Our role is to
-          strengthen those hands.
-        </p>
+          <p>
+            India’s future lies in the hands of its people. Our role is to
+            strengthen those hands.
+          </p>
 
-        <p>
-          With humility, commitment, and collective effort, we dedicate
-          ourselves to building a nation where opportunity reaches every corner,
-          dignity reaches every home, and hope reaches every heart.
-        </p>
+          <p>
+            With humility, commitment, and collective effort, we dedicate
+            ourselves to building a nation where opportunity reaches every
+            corner, dignity reaches every home, and hope reaches every heart.
+          </p>
 
-        <p>Together, let us build a Fortunate Future for India.</p>
-        <Link to="/about" className="btn primary">
-          Learn More
-        </Link>
+          <p>Together, let us build a Fortunate Future for India.</p>
+          <Link to="/about" className="btn primary">
+            Learn More
+          </Link>
+        </div>
       </div>
 
       {/* Why We Do This Section */}

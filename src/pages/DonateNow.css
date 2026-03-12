@@ -1,4 +1,3 @@
-
 :root {
     --primary-color: #1e88e5;
     --secondary-color: #43a047;
@@ -40,6 +39,21 @@ body {
     position: relative;
     overflow: hidden;
     padding: 60px 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e8f4f8 30%, #f0f5ff 60%, #fef8e8 100%);
+}
+
+.donate-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(45, 128, 47, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(34, 113, 177, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Background Decoration */
@@ -93,23 +107,24 @@ body {
 
 .donate-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     animation: slideInDown 0.8s ease-out;
 }
 
 .donate-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2271b1 0%, #2d802f 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -1px;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
 }
 
 .donate-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-light);
+    font-size: 1.1rem;
+    color: #666;
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.8;
@@ -134,21 +149,34 @@ body {
     gap: 40px;
     /* margin-bottom: 80px; */
     perspective: 1000px;
+    margin-bottom: 60px;
 }
 
 /* Payment Cards */
 .payment-card {
-    background: var(--bg-white);
+    background: linear-gradient(135deg, var(--bg-white) 0%, #f8f9fa 100%);
     border-radius: 20px;
     padding: 40px 30px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 30px rgba(34, 113, 177, 0.12);
     transition: var(--transition);
     /* border: 2px solid transparent; */
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    /* animation: slideInUp 0.8s ease-out; */
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .payment-card::before {
@@ -157,20 +185,24 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 5px;
     background: linear-gradient(90deg,
-            var(--primary-color),
-            var(--secondary-color),
-            var(--accent-color));
+            #2271b1,
+            #2d802f,
+            #f4511e);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.6s ease-out;
 }
 
 .payment-card:hover {
-    /* transform: translateY(-10px); */
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(34, 113, 177, 0.15);
     /* border-color: var(--primary-color); */
+}
+
+.payment-card:hover::before {
+    transform: scaleX(1);
 }
 
 @keyframes slideInUp {
@@ -247,15 +279,15 @@ body {
     text-align: center;
     margin-bottom: 25px;
     padding: 20px;
-    background: var(--bg-light);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e8f4f8 100%);
     border-radius: 16px;
-    border: 2px dashed var(--border-color);
+    border: 2px dashed #e0e0e0;
     transition: var(--transition);
 }
 
 .payment-card:hover .qr-container {
-    border-color: var(--primary-color);
-    background: linear-gradient(135deg, rgba(30, 136, 229, 0.05), rgba(67, 160, 71, 0.05));
+    border-color: #2271b1;
+    background: linear-gradient(135deg, rgba(34, 113, 177, 0.08), rgba(45, 128, 47, 0.08));
 }
 
 .qr-code {
@@ -286,19 +318,22 @@ body {
 }
 
 .detail-item {
-    background: var(--bg-light);
+    background: linear-gradient(135deg, #f8f9fa 0%, rgba(255, 255, 255, 0.5) 100%);
     padding: 16px 18px;
     border-radius: 12px;
-    border-left: 4px solid var(--secondary-color);
+    border-left: 4px solid #2d802f;
     transition: var(--transition);
     position: relative;
+    box-shadow: 0 2px 8px rgba(34, 113, 177, 0.06);
 }
 
 .detail-item:hover {
-    background: linear-gradient(135deg, rgba(67, 160, 71, 0.1), rgba(30, 136, 229, 0.05));
-    border-left-color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(45, 128, 47, 0.08), rgba(34, 113, 177, 0.05));
+    border-left-color: #2271b1;
     transform: translateX(5px);
+    box-shadow: 0 6px 15px rgba(34, 113, 177, 0.1);
 }
+
 
 .detail-header {
     display: flex;
@@ -381,7 +416,7 @@ body {
 .copy-all-btn {
     width: 100%;
     padding: 16px 24px;
-    background: linear-gradient(135deg, var(--secondary-color), #2e7d32);
+    background: linear-gradient(135deg, #2d802f 0%, #1f5c23 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -393,7 +428,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 6px 20px rgba(45, 128, 47, 0.3);
 }
 
 .copy-all-btn svg {
@@ -402,30 +437,34 @@ body {
 }
 
 .copy-all-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(45, 128, 47, 0.4);
 }
 
 .copy-all-btn:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
 }
 
 .why-donate-section {
-    background: var(--bg-white);
+    background: linear-gradient(135deg, var(--bg-white) 0%, #f8f9fa 100%);
     padding: 60px 40px;
     border-radius: 20px;
     margin-bottom: 60px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 30px rgba(34, 113, 177, 0.12);
     animation: fadeIn 1s ease-out 0.3s both;
+    position: relative;
+    z-index: 10;
 }
 
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2271b1 0%, #2d802f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: center;
     margin-bottom: 50px;
-    color: var(--text-dark);
     position: relative;
     padding-bottom: 20px;
 }
@@ -439,8 +478,9 @@ body {
     width: 100px;
     height: 4px;
     background: linear-gradient(90deg,
-            var(--primary-color),
-            var(--secondary-color));
+            #2271b1,
+            #2d802f,
+            #f4511e);
     border-radius: 2px;
 }
 
@@ -452,18 +492,19 @@ body {
 
 .benefit-card {
     padding: 30px;
-    background: linear-gradient(135deg, var(--bg-light), rgba(255, 255, 255, 0.5));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, #f8f9fa 100%);
     border-radius: 16px;
     text-align: center;
     transition: var(--transition);
     border: 2px solid transparent;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(34, 113, 177, 0.08);
 }
 
 .benefit-card:hover {
     transform: translateY(-8px);
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
+    border-color: #2271b1;
+    box-shadow: 0 12px 35px rgba(34, 113, 177, 0.15);
 }
 
 .benefit-icon {
@@ -506,11 +547,13 @@ body {
 }
 
 .faq-section {
-    background: var(--bg-white);
+    background: linear-gradient(135deg, var(--bg-white) 0%, #f8f9fa 100%);
     padding: 60px 40px;
     border-radius: 20px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 30px rgba(34, 113, 177, 0.12);
     animation: fadeIn 1s ease-out 0.6s both;
+    position: relative;
+    z-index: 10;
 }
 
 .faq-grid {
@@ -521,18 +564,20 @@ body {
 
 .faq-item {
     padding: 25px;
-    background: var(--bg-light);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, #f8f9fa 100%);
     border-radius: 12px;
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid #2271b1;
     transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(34, 113, 177, 0.06);
 }
 
 .faq-item:hover {
     transform: translateX(8px);
     background: linear-gradient(135deg,
-            rgba(30, 136, 229, 0.08),
-            rgba(67, 160, 71, 0.08));
-    box-shadow: var(--shadow-sm);
+            rgba(34, 113, 177, 0.05),
+            rgba(45, 128, 47, 0.05));
+    box-shadow: 0 8px 25px rgba(34, 113, 177, 0.12);
+    border-left-color: #2d802f;
 }
 
 .faq-item h3 {

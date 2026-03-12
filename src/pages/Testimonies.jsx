@@ -121,6 +121,10 @@ const Testimonies = () => {
           <div className="testimonies-grid">
             {testimonies.map((testimony) => (
               <div key={testimony.id} className="testimony-card">
+                <div className="testimony-header">
+                  <h3 className="testimony-name">{testimony.name}</h3>
+                  <p className="testimony-role">{testimony.role}</p>
+                </div>
                 <Link
                   to={`/testimony/${testimony.id}`}
                   className="testimony-image-wrapper"
@@ -133,18 +137,10 @@ const Testimonies = () => {
                   />
                 </Link>
                 <div className="testimony-content">
-                  <h3 className="testimony-name">{testimony.name}</h3>
-                  <p className="testimony-role">{testimony.role}</p>
                   <p className="testimony-text">
-                    {testimony.content.substring(0, 100)}
-                    {testimony.content.length > 100 ? "..." : ""}
+                    {testimony.content.substring(0, 50)}
+                    {testimony.content.length > 50 ? "..." : ""}
                   </p>
-                  <Link
-                    to={`/testimony/${testimony.id}`}
-                    className="read-more-btn"
-                  >
-                    Read More
-                  </Link>
                 </div>
               </div>
             ))}

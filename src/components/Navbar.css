@@ -15,14 +15,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1f6098 100%);
     padding: 8px 20px;
     position: sticky;
     height: 60px;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
 }
 
 /* Logo Styling */
@@ -30,6 +31,11 @@ body {
     width: 45px;
     height: 45px;
     max-width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
 }
 
 /* Navigation Links (Desktop) */
@@ -50,22 +56,38 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
-    padding: 5px 0;
+    transition: var(--transition);
+    padding: 5px 10px;
     display: block;
     font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--warm-orange), var(--sunny-yellow));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
 
 .nav-links a.active {
-    color: #ff9800;
+    color: var(--sunny-yellow);
     font-weight: 600;
-    border-bottom: 2px solid #ff9800;
 }
 
 .nav-links a:hover {
-    color: #ff9800;
+    color: var(--sunny-yellow);
 }
 
 /* Dropdown Styles */
@@ -74,25 +96,41 @@ body {
 }
 
 .dropdown-trigger {
-    color: black;
+    color: white;
     font-size: 0.95rem;
-    padding: 5px 0;
+    padding: 5px 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 5px;
-    transition: color 0.3s ease;
+    transition: var(--transition);
     font-weight: 500;
+    position: relative;
+}
+
+.dropdown-trigger::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--warm-orange), var(--sunny-yellow));
+    transition: width 0.3s ease;
+}
+
+.dropdown-trigger:hover::after,
+.dropdown-trigger.active::after {
+    width: 100%;
 }
 
 .dropdown-trigger:hover {
-    color: #ff9800;
+    color: var(--sunny-yellow);
 }
 
 .dropdown-trigger.active {
-    color: #ff9800;
+    color: var(--sunny-yellow);
     font-weight: bold;
-    border-bottom: 2px solid #ff9800;
 }
 
 .chevron-icon {
@@ -109,34 +147,54 @@ body {
     position: absolute;
     top: 100%;
     right: 0;
-    background: white;
+    background: var(--white);
     min-width: 250px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    margin-top: 10px;
+    box-shadow: var(--shadow-heavy);
+    border-radius: 12px;
+    margin-top: 15px;
     padding: 8px 0;
-    animation: fadeIn 0.2s ease-in-out;
+    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
+    border-top: 4px solid var(--warm-orange);
 }
 
 .dropdown-item {
     padding: 12px 20px;
-    color: black;
+    color: var(--text-dark);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--transition);
     font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--warm-orange), var(--sunny-yellow));
+    opacity: 0.1;
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.dropdown-item:hover::before {
+    left: 0;
 }
 
 .dropdown-item:hover {
-    background-color: #fff3e0;
-    color: #ff9800;
+    color: var(--warm-orange);
+    padding-left: 30px;
 }
 
 /* Animation */
-@keyframes fadeIn {
+@keyframes slideDown {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-15px);
     }
 
     to {
@@ -152,18 +210,18 @@ body {
 }
 
 .mobile-dropdown-menu {
-    background: #f9f9f9;
+    background: linear-gradient(135deg, var(--light-bg) 0%, #fff 100%);
     padding: 5px 0;
     margin: 0;
     border-radius: 0;
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+    border-top: 2px solid var(--warm-orange);
+    border-bottom: 2px solid var(--warm-orange);
 }
 
 .mobile-dropdown-menu .dropdown-item {
     padding: 10px 35px;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--text-dark);
 }
 
 /* Logout Button */
@@ -175,15 +233,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--transition);
 }
 
 .logout-icon {
     font-size: 1.5rem;
-    transition: transform 0.3s ease;
+    color: white;
+    transition: var(--transition);
 }
 
 .logout-btn:hover .logout-icon {
-    transform: scale(1.1);
+    transform: scale(1.2) rotate(-15deg);
+    color: var(--warm-orange);
 }
 
 /* Action Bar - Integrated in Navbar (Desktop) */
@@ -195,33 +256,33 @@ body {
 
 /* Mobile Donate Button */
 .mobile-donate-btn {
-    background: #ffc107;
-    color: #333;
+    background: linear-gradient(135deg, var(--sunny-yellow) 0%, var(--warm-orange) 100%);
+    color: white;
     padding: 8px 15px;
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 8px;
     font-weight: 700;
     font-size: 0.7rem;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 0.4px;
-    border: 2px solid #ffc107;
+    border: none;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
 }
 
 .mobile-donate-btn:hover {
-    background: #ffb300;
-    border-color: #ffb300;
-    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
 }
 
 .action-btn {
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 8px;
     font-weight: 700;
     font-size: 0.75rem;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     display: inline-block;
     border: 2px solid transparent;
     text-transform: uppercase;
@@ -229,29 +290,27 @@ body {
 }
 
 .donate-btn {
-    background: #ffc107;
-    color: #333;
-    border: 2px solid #ffc107;
-}
-
-.donate-btn:hover {
-    background: #ffb300;
-    border-color: #ffb300;
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--sunny-yellow) 0%, var(--warm-orange) 100%);
+    color: white;
+    border: none;
     box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
 }
 
+.donate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.5);
+}
+
 .join-btn {
-    background: #1a3a5c;
+    background: linear-gradient(135deg, var(--primary-green) 0%, #1f5c23 100%);
     color: white;
-    border: 2px solid #1a3a5c;
+    border: none;
+    box-shadow: var(--shadow-medium);
 }
 
 .join-btn:hover {
-    background: #0d1f35;
-    border-color: #0d1f35;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(26, 58, 92, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(45, 128, 47, 0.4);
 }
 
 /* Removed separate action-bar styles */
@@ -268,8 +327,14 @@ body {
 .menu-icon {
     display: none;
     font-size: 2rem;
-    color: black;
+    color: white;
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.menu-icon:hover {
+    color: var(--sunny-yellow);
+    transform: scale(1.1);
 }
 
 /* Responsive Design */
@@ -298,14 +363,14 @@ body {
         width: 100%;
         max-width: 300px;
         height: calc(100vh - 60px);
-        background: white;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #1f6098 100%);
         flex-direction: column;
         text-align: left;
         justify-content: flex-start;
         display: none;
         padding: 20px 0;
         overflow-y: auto;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-heavy);
     }
 
     .nav-links.open {
@@ -315,28 +380,31 @@ body {
     .nav-links li {
         padding: 12px 20px;
         width: 100%;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-links a {
         font-size: 1rem;
         padding: 5px 0;
+        color: white;
     }
 
     .dropdown-trigger {
         font-size: 1rem;
         justify-content: flex-start;
+        color: white;
     }
 
     .mobile-dropdown-menu {
         width: 100%;
         margin: 10px 0;
-        background: #f9f9f9;
+        background: rgba(255, 255, 255, 0.1);
     }
 
     .mobile-dropdown-menu .dropdown-item {
         padding: 10px 20px;
         font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
     }
 
     /* Hide action buttons from navbar on mobile */
