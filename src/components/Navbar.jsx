@@ -74,7 +74,7 @@ const Navbar = () => {
       {/* Logo */}
       <div className="logo">
         <NavLink to="/">
-          <img src="/images/fortune_logo.jpg" alt="NGO Logo" />
+          <img src="/images/newlogo.jpg" alt="NGO Logo" />
         </NavLink>
       </div>
 
